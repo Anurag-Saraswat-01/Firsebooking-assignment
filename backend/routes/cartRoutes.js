@@ -21,8 +21,8 @@ router.route("/addToCart").post(addToCart);
 
 router.route("/userCartBooks/:id").get(getUserCartBooks);
 
-router.route("/deleteBook").post(deleteBook);
+router.route("/deleteBook/:cid/:bid").delete(deleteBook);
 
-router.route("/deleteCart").post(deleteCart);
+router.route("/deleteCart/:id").delete(deleteCart);
 
 module.exports = router;

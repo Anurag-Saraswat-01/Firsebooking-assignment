@@ -178,11 +178,11 @@ ORDER BY carts.name;
 };
 
 const deleteBook = (req, res) => {
-  const cid = req.body.cid;
-  const bid = req.body.bid;
+  const cid = req.params.cid;
+  const bid = req.params.bid;
 
   con.query(
-    `DELETE FROM cart_books WHERE cart_id=${cid} AND book_id=${bid}`,
+    `DELETE FROM cart_books WHERE cart_id=${cid} AND book_id=${bid};`,
     (err) => {
       if (err) {
         console.log(err);
@@ -195,9 +195,9 @@ const deleteBook = (req, res) => {
 };
 
 const deleteCart = (req, res) => {
-  const cid = req.body.cid;
+  const cid = req.params.id;
 
-  con.query(`DELETE FROM carts WHERE id=${cid}`, (err) => {
+  con.query(`DELETE FROM carts WHERE id=${cid};`, (err) => {
     if (err) {
       console.log(err);
       res.status(400).json({ message: "Cart was not deleted" });

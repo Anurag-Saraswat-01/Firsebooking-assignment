@@ -16,6 +16,17 @@ function MyApp({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap");
   }, []);
 
+  useEffect(() => {
+    const data = window.localStorage.getItem("loginStatus");
+    if (data) {
+      setLoginStatus(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("login_status", JSON.stringify(loginStatus));
+  }, [loginStatus]);
+
   return (
     <AppContext.Provider
       value={{ loginStatus: loginStatus, setLoginStatus: setLoginStatus }}
