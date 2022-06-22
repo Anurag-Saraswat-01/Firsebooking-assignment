@@ -1,9 +1,23 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 
 const app = express();
+
+const whitelist = ["http://localhost:3000"];
+
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  origin: (origin, callback) => {
+    if (whitelist.includes(origin)) return callback(null, true);
+
+    callback(new Error("Not allowed by CORS"));
+  },
+};
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
 

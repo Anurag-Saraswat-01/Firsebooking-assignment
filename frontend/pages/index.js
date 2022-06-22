@@ -18,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>{context.loginStatus.uid}</main>
+      <main className="main">{context.loginStatus.username}</main>
     </div>
   );
 }

@@ -2,60 +2,43 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import { useContext } from "react";
 import AppContext from "../appContext";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
 
 const Header = () => {
   const context = useContext(AppContext);
 
   return (
-    <nav className="nav navbar-expand-lg navbar-dark bg-dark">
-      <div className={`container ${styles.navContainer}`}>
-        <Link href="/">
-          <a className="navbar-brand">FirseRead</a>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Link href="/" passHref>
+          <Navbar.Brand>FirseRead</Navbar.Brand>
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            {context.loginStatus.loggedin ? (
-              <>
-                <li className="nav-item">
-                  <Link href="/cart">
-                    <a className="nav-link">Cart</a>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link href="/logout">
-                    <a className="nav-link">Logout</a>
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item">
-                  <Link href="/login">
-                    <a className="nav-link">Login</a>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link href="/signup">
-                    <a className="nav-link">Sign Up</a>
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          {context.loginStatus.loggedin ? (
+            <Nav className="ms-auto">
+              <Link href="/cart" passHref>
+                <Nav.Link>Cart</Nav.Link>
+              </Link>
+              <Link href="/logout" passHref>
+                <Nav.Link>Logout</Nav.Link>
+              </Link>
+            </Nav>
+          ) : (
+            <Nav className="ms-auto">
+              <Link href="/login" passHref>
+                <Nav.Link>Login</Nav.Link>
+              </Link>
+              <Link href="/signup" passHref>
+                <Nav.Link>Sign Up</Nav.Link>
+              </Link>
+            </Nav>
+          )}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

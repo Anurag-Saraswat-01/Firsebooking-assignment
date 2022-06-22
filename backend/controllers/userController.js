@@ -25,7 +25,7 @@ const signupUser = async (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
 
-  con.query(`SELECT * FROM users WHERE email='${email};'`, (err, result) => {
+  con.query(`SELECT * FROM users WHERE email='${email}';`, (err, result) => {
     if (err) {
       console.log(err);
       return res.status(400).json({ message: "Something went wrong" });
@@ -61,7 +61,7 @@ const loginUser = async (req, res) => {
     existingUser = res;
   };
 
-  con.query(`SELECT * FROM users WHERE email='${email};'`, (err, result) => {
+  con.query(`SELECT * FROM users WHERE email='${email}';`, (err, result) => {
     if (err) {
       console.log(err);
       return res.status(400).json({ message: "Something went wrong" });
@@ -69,18 +69,16 @@ const loginUser = async (req, res) => {
       setExistingUser(result);
 
       if (existingUser.length === 0) {
-        return res
-          .status(404)
-          .json({ message: "Invalid Username or Password" });
+        return res.status(400).json({ message: "User does not exist" });
       } else if (bcrypt.compareSync(password, existingUser[0].password)) {
         return res.status(201).json({
-          message: "Login Successfull",
+          message: "Login Successful",
           uid: existingUser[0].id,
-          name: existingUser[0].name,
+          username: existingUser[0].name,
         });
       } else {
         return res
-          .status(404)
+          .status(400)
           .json({ message: "Invalid Username or Password" });
       }
     }

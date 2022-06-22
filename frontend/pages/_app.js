@@ -8,8 +8,8 @@ import AppContext from "../appContext";
 function MyApp({ Component, pageProps }) {
   const [loginStatus, setLoginStatus] = useState({
     loggedin: false,
-    uid: NaN,
-    username: "",
+    uid: null,
+    username: null,
   });
 
   useEffect(() => {
