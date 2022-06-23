@@ -54,18 +54,24 @@ The Database and Backend were designed and developed first, followed by Frontend
 
 ### Signup
 
-- Desktop View: ![Signup](/Screenshots/Signup%20desktop.png)
-- Succesful Signup ![Succesful Signup](/Screenshots/Signup%20successful.png)
+- Desktop View:
+  ![Signup](/Screenshots/Signup%20desktop.png)
+- Succesful Signup:
+  ![Succesful Signup](/Screenshots/Signup%20successful.png)
 
 ### Home
 
-- Desktop View: ![Home](/Screenshots/Home%20desktop.png)
-- Add to Cart Pop Up: ![Add to Cart](/Screenshots/Add%20existing%20cart.png)
+- Desktop View:
+  ![Home](/Screenshots/Home%20desktop.png)
+- Add to Cart Pop Up:
+  ![Add to Cart](/Screenshots/Add%20existing%20cart.png)
 
 ### Cart
 
-- Desktop View: ![Cart](/Screenshots/Carts%20desktop.png)
-- Opened Cart: ![Opened Cart](/Screenshots/Cart%20open.png)
+- Desktop View:
+  ![Cart](/Screenshots/Carts%20desktop.png)
+- Opened Cart:
+  ![Opened Cart](/Screenshots/Cart%20open.png)
 
 ### Logout
 
