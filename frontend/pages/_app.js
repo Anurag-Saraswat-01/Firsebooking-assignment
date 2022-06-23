@@ -17,15 +17,12 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    const data = window.localStorage.getItem("loginStatus");
+    const data = window.localStorage.getItem("login_status");
     if (data) {
+      console.log("Inside data", JSON.parse(data));
       setLoginStatus(JSON.parse(data));
     }
   }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("login_status", JSON.stringify(loginStatus));
-  }, [loginStatus]);
 
   return (
     <AppContext.Provider

@@ -1,4 +1,4 @@
-import styles from "../styles/Signup.module.css";
+import styles from "../styles/Login.module.css";
 import Head from "next/head";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -78,53 +78,63 @@ const signup = () => {
       </Head>
       <main className="main">
         <h2 className="title">Sign Up</h2>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={handleNameChange}
-              required
-            />
-          </Form.Group>
+        <div className={styles.formWrapper}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={handleNameChange}
+                required
+              />
+            </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={handleEmailChange}
-              required
-            />
-          </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+            </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-              required
-            />
-          </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+              />
+            </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+            <Button
+              className={styles.submitBtn}
+              variant="outline-warning"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
 
-        <Alert show={showAlert} variant={error.status ? "danger" : "success"}>
-          {error.message}{" "}
-          {!error.status && (
-            <Link href="/login" passHref>
-              <Alert.Link>Go To Login Page</Alert.Link>
-            </Link>
-          )}
-        </Alert>
+          <Alert
+            show={showAlert}
+            variant={error.status ? "danger" : "success"}
+            className="mt-3"
+          >
+            {error.message}{" "}
+            {!error.status && (
+              <Link href="/login" passHref>
+                <Alert.Link>Go To Login Page</Alert.Link>
+              </Link>
+            )}
+          </Alert>
+        </div>
       </main>
     </>
   );

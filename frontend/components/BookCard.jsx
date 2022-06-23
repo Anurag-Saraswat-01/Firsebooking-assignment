@@ -8,6 +8,7 @@ import axios from "axios";
 import { useContext } from "react";
 import AppContext from "../appContext";
 import Alert from "react-bootstrap/Alert";
+import { FaShoppingCart, FaPlus } from "react-icons/fa";
 
 const BookCard = ({ book }) => {
   const [carts, setCarts] = useState([]);
@@ -129,40 +130,49 @@ const BookCard = ({ book }) => {
         <div className={styles.imageWrapper}>
           <Image
             src={require(`../public/book_images/${book.cover}`)}
-            width={100}
-            height={150}
             alt={book.name}
             className={styles.image}
           />
         </div>
         <div className={styles.textWrapper}>
-          <h4 className={styles.textName}>{book.name}</h4>
-          <h5 className={styles.textAuthor}>{book.author}</h5>
-          <Button variant="primary" onClick={() => setShowModal(true)}>
+          <h5 className={styles.textName}>{book.name}</h5>
+          <h6 className={styles.textAuthor}>By {book.author}</h6>
+          <Button
+            className={styles.addBtn}
+            variant="outline-warning"
+            onClick={() => setShowModal(true)}
+          >
             Add to Cart
+            <FaShoppingCart />
           </Button>
         </div>
       </div>
       {/* modal for adding to cart */}
       <Modal show={showModal} aria-labelledby="add-to-cart-modal" centered>
-        <Modal.Header closeButton onClick={() => setShowModal(false)}>
+        <Modal.Header
+          className={styles.modalHeader}
+          closeButton
+          onClick={() => setShowModal(false)}
+        >
           <Modal.Title id="add-to-cart-modal">
             Add "{book.name}" to a Cart
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <h6>Your Carts</h6>
+        <Modal.Body className={styles.modalBody}>
+          <h5>Your Carts</h5>
           <div className={styles.cartsWrapper}>
             {carts.length !== 0
               ? carts.map((data, key) => {
                   return (
                     <div className={styles.cartWrapper} key={key}>
-                      <p>{data.name}</p>
+                      <p className={styles.cartName}>{data.name}</p>
                       <Button
-                        variant="primary"
+                        className={styles.addBtn}
+                        variant="outline-warning"
                         onClick={() => handleAdd(data.id)}
                       >
                         Add
+                        <FaPlus />
                       </Button>
                     </div>
                   );
@@ -171,9 +181,9 @@ const BookCard = ({ book }) => {
           </div>
           <hr />
           {/* form for creating a new cart */}
-          <h6>Create New Cart</h6>
-          <Form onSubmit={handleCreateNewCart}>
-            <Form.Group className="mb-3">
+          <h5>Create New Cart</h5>
+          <Form className={styles.newCartForm} onSubmit={handleCreateNewCart}>
+            <Form.Group>
               <Form.Control
                 type="text"
                 placeholder="New Cart"
@@ -182,12 +192,21 @@ const BookCard = ({ book }) => {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button
+              className={styles.addBtn}
+              variant="outline-warning"
+              type="submit"
+            >
               Create
+              <FaPlus />
             </Button>
           </Form>
 
-          <Alert show={showAlert} variant={error.status ? "danger" : "success"}>
+          <Alert
+            className="mt-3"
+            show={showAlert}
+            variant={error.status ? "danger" : "success"}
+          >
             {error.message}
           </Alert>
         </Modal.Body>

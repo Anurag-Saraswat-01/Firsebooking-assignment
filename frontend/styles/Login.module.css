@@ -1,0 +1,18 @@
+.formWrapper {
+  background-color: var(--bg-dark);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.submitBtn {
+  display: flex;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .formWrapper {
+    width: 400px;
+  }
+}

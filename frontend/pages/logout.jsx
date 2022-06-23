@@ -15,6 +15,7 @@ const logout = () => {
       username: null,
     };
     context.setLoginStatus(loginStatus);
+    window.localStorage.setItem("login_status", JSON.stringify(loginStatus));
   }, []);
 
   return (
@@ -28,9 +29,11 @@ const logout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
-        <h2 className="title">Logged Out Successfully</h2>
+        <h2 className={styles.title}>Logged Out Successfully</h2>
         <Link href="/login" passHref>
-          <a>Login Again?</a>
+          <a>
+            <h4>Login Again?</h4>
+          </a>
         </Link>
       </main>
     </>

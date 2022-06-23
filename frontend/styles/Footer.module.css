@@ -2,5 +2,7 @@
   text-align: center;
   padding: 0.5rem 1rem;
   width: 100%;
-  color: white;
+  color: var(--primary);
+  background-color: var(--bg-dark);
+  font-family: var(--font-body);
 }

@@ -1,0 +1,69 @@
+.accordion {
+  width: 100%;
+  font-family: var(--font-body);
+}
+
+.accordionItem {
+  background-color: var(--bg-dark);
+}
+
+.accordionHeader h4 {
+  margin: 0;
+}
+
+.accordionHeader > button {
+  background-color: var(--bg-dark);
+  color: var(--primary);
+}
+
+.accordionHeader > button:not(.collapsed) {
+  background-color: var(--bg-dark);
+  color: var(--primary);
+}
+
+.accordionHeader > button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.accordionBodyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.accordionBodyHeader h5 {
+  margin: 0;
+}
+
+.cardBookWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cardWrapper {
+  width: 100%;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem
+}
+
+@media only screen and (min-width: 768px) {
+  .accordion {
+    width: calc(100% - 2rem);
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .accordion {
+    width: 800px;
+  }
+}

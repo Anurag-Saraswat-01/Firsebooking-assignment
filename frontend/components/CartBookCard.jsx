@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import { useState } from "react";
+import { FaMinus } from "react-icons/fa";
 
 const CartBookCard = ({ cart_id, book, getCarts }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -48,21 +49,29 @@ const CartBookCard = ({ cart_id, book, getCarts }) => {
         <div className={styles.imageWrapper}>
           <Image
             src={require(`../public/book_images/${book.book_cover}`)}
-            width={80}
-            height={120}
             alt={book.name}
             className={styles.image}
           />
         </div>
         <div className={styles.textWrapper}>
-          <h4 className={styles.textName}>{book.book_name}</h4>
-          <h5 className={styles.textAuthor}>{book.book_author}</h5>
+          <h5 className={styles.textName}>{book.book_name}</h5>
+          <h6 className={styles.textAuthor}>By {book.book_author}</h6>
         </div>
-        <Button variant="danger" onClick={handleDelete}>
-          Delete
+        <Button
+          className={styles.removeBtn}
+          variant="danger"
+          onClick={handleDelete}
+        >
+          Remove
+          <FaMinus />
         </Button>
       </div>
-      <Alert show={showAlert} variant={error.status ? "danger" : "success"}>
+      <hr />
+      <Alert
+        className="my-2"
+        show={showAlert}
+        variant={error.status ? "danger" : "success"}
+      >
         {error.message}
       </Alert>
     </>

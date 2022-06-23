@@ -8,6 +8,7 @@ import axios from "axios";
 import CartBookCard from "../components/CartBookCard";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import { FaTrash } from "react-icons/fa";
 
 const cart = () => {
   const [carts, setCarts] = useState({});
@@ -114,36 +115,54 @@ const cart = () => {
       </Head>
       <main className="main">
         <h2 className="title">Your Carts</h2>
-        <Accordion>
+        <Accordion className={styles.accordion} variant="dark">
           {Object.keys(carts).map((data, key) => {
             return (
               <div key={key}>
-                <Accordion.Item eventKey={key.toString()}>
-                  <Accordion.Header>
-                    {carts[data].cart_name}
-                    <Button variant="danger" onClick={() => handleDelete(data)}>
-                      Delete
-                    </Button>
+                <Accordion.Item
+                  className={styles.accordionItem}
+                  eventKey={key.toString()}
+                >
+                  <Accordion.Header className={styles.accordionHeader}>
+                    <h4>{carts[data].cart_name}</h4>
                   </Accordion.Header>
                   <Accordion.Body>
-                    {carts[data].books.map((book, key) => {
-                      return (
-                        <div key={key}>
-                          <CartBookCard
-                            cart_id={data}
-                            book={book}
-                            getCarts={getCarts}
-                          />
-                        </div>
-                      );
-                    })}
+                    <div className={styles.accordionBodyHeader}>
+                      <h5>Delete this cart?</h5>
+                      <Button
+                        className={styles.deleteBtn}
+                        variant="danger"
+                        onClick={() => handleDelete(data)}
+                      >
+                        Delete
+                        <FaTrash />
+                      </Button>
+                    </div>
+                    <hr />
+                    <div className={styles.cardBookWrapper}>
+                      {carts[data].books.map((book, key) => {
+                        return (
+                          <div className={styles.cardWrapper} key={key}>
+                            <CartBookCard
+                              cart_id={data}
+                              book={book}
+                              getCarts={getCarts}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
                   </Accordion.Body>
                 </Accordion.Item>
               </div>
             );
           })}
         </Accordion>
-        <Alert show={showAlert} variant={error.status ? "danger" : "success"}>
+        <Alert
+          className="my-2"
+          show={showAlert}
+          variant={error.status ? "danger" : "success"}
+        >
           {error.message}
         </Alert>
       </main>

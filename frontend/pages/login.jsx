@@ -60,6 +60,11 @@ const login = () => {
             username: res.data.username,
           };
           context.setLoginStatus(loginStatus);
+          window.localStorage.setItem(
+            "login_status",
+            JSON.stringify(loginStatus)
+          );
+
           router.push("/");
         })
         .catch((err) => {
@@ -89,37 +94,47 @@ const login = () => {
       </Head>
       <main className="main">
         <h2 className="title">Login</h2>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={handleEmailChange}
-              required
-            />
-          </Form.Group>
+        <div className={styles.formWrapper}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+            </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-              required
-            />
-          </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+              />
+            </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+            <Button
+              className={styles.submitBtn}
+              variant="outline-warning"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
 
-        <Alert show={showAlert} variant={error.status ? "danger" : "success"}>
-          {error.message}
-        </Alert>
+          <Alert
+            className="mt-3"
+            show={showAlert}
+            variant={error.status ? "danger" : "success"}
+          >
+            {error.message}
+          </Alert>
+        </div>
       </main>
     </>
   );
