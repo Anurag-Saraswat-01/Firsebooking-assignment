@@ -127,11 +127,14 @@ const signup = () => {
             variant={error.status ? "danger" : "success"}
             className="mt-3"
           >
-            {error.message}{" "}
+            {error.message}
             {!error.status && (
-              <Link href="/login" passHref>
-                <Alert.Link>Go To Login Page</Alert.Link>
-              </Link>
+              <>
+                <br />
+                <Link href="/login" passHref>
+                  <Alert.Link>Go To Login Page</Alert.Link>
+                </Link>
+              </>
             )}
           </Alert>
         </div>
