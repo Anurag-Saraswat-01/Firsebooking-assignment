@@ -16,7 +16,7 @@ const logout = () => {
     };
     context.setLoginStatus(loginStatus);
     window.localStorage.setItem("login_status", JSON.stringify(loginStatus));
-  }, [context]);
+  }, []);
 
   return (
     <>
