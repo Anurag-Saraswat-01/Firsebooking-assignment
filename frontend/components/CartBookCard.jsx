@@ -31,7 +31,9 @@ const CartBookCard = ({ cart_id, book, getCarts }) => {
           console.log(res);
           setShowAlert(true);
           setError({ status: false, message: res.data.message });
-          getCarts();
+          setTimeout(() => {
+            getCarts();
+          }, 500);
         })
         .catch((err) => {
           console.log(err);

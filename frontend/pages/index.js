@@ -52,7 +52,7 @@ export default function Home() {
         </Head>
 
         <main className="main">
-          <h2 className="title">
+          <h2 className={styles.title}>
             Welcome back {context.loginStatus.username}!
           </h2>
           <h3 className="title">All Books</h3>
@@ -61,7 +61,7 @@ export default function Home() {
               books.map((data, key) => {
                 return (
                   <div key={key}>
-                    <BookCard book={data} />
+                    <BookCard book={data} getBooks={getBooks} />
                   </div>
                 );
               })}

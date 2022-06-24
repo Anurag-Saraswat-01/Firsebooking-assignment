@@ -10,7 +10,7 @@ import AppContext from "../appContext";
 import Alert from "react-bootstrap/Alert";
 import { FaShoppingCart, FaPlus } from "react-icons/fa";
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, getBooks }) => {
   const [carts, setCarts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [newCart, setNewCart] = useState("");
@@ -79,6 +79,7 @@ const BookCard = ({ book }) => {
           console.log(res);
           setShowAlert(true);
           setError({ status: false, message: res.data.message });
+          getBooks();
           getCarts();
         })
         .catch((err) => {
@@ -121,7 +122,7 @@ const BookCard = ({ book }) => {
       return;
     }
     getCarts();
-  }, [context]);
+  }, [context, book]);
 
   return (
     <>
