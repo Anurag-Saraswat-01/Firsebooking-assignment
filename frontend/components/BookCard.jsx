@@ -156,7 +156,7 @@ const BookCard = ({ book, getBooks }) => {
           onClick={() => setShowModal(false)}
         >
           <Modal.Title id="add-to-cart-modal">
-            Add "{book.name}" to a Cart
+            Add &quot;{book.name}&quot; to a Cart
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className={styles.modalBody}>

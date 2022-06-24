@@ -80,7 +80,7 @@ const login = () => {
 
   useEffect(() => {
     if (context.loginStatus.loggedin) router.push("/");
-  }, [context]);
+  }, [context, router]);
 
   return (
     <>
